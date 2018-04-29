@@ -1,0 +1,39 @@
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#add_project_modal">Add Project</button>
+<table class="table table-responsive table-striped">
+  <thead>
+    <th></th>
+    <th>Name</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @projects.each_with_index do |project, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= project.name %></td>
+        <td><%= link_to 'View ToDo Lists', admin_todo_lists_path(project), class: 'btn btn-info' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<%= link_to "Back", manager_root_path, class: "btn btn-info" %>
+
+<div id="add_project_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Project</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag admin_create_project_path, method: :post, remote: true do %>
+          <div class="form-group">          
+            <%= label_tag :name %>  
+            <%= text_field_tag :name, '', autofocus: true, required: true, class: 'form-control' %>  
+          </div>
+          <%= submit_tag "Add", class: 'btn btn-info' %>    
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</div>

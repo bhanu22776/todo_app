@@ -1,0 +1,41 @@
+<%= link_to "All Projects", admin_home_index_path, class: "btn btn-info" %>
+<h1>ToDo Lists</h1>
+<hr>
+<div class="container"> 
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a  href="#developer" data-toggle="tab">Developer</a>
+    </li>
+    <li><a href="#project" data-toggle="tab">Project</a>
+    </li>
+    </li>
+  </ul>
+
+  <div class="tab-content ">
+    <div class="tab-pane active" id="developer">
+      <table class="table table-responsive table-striped">
+        <thead>
+          <%= todo_list_developer_header(@to_do_lists) %>
+        </thead>
+        <tbody>
+          <% @to_do_lists.each do |status, to_do_lists| %>
+            <%= todo_list_user_details(status, to_do_lists) %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane" id="project">
+      <table class="table table-responsive table-striped">
+        <thead>
+          <%= todo_list_project_header(@to_do_lists) %>
+        </thead>
+        <tbody>
+          <% @to_do_lists.each do |status, to_do_lists| %>
+            <%= todo_list_project_details(status, to_do_lists) %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

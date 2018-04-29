@@ -1,0 +1,4 @@
+jQuery.noConflict();
+$("#assign_developer_popup_modal").remove();
+$('body').append("<%= j(render partial: 'assign_developer_popup', locals: {project: @project, to_do_list: @to_do_list}) %>");
+$("#assign_developer_popup_modal").modal({backdrop: 'static', keyboard: false, show: true});

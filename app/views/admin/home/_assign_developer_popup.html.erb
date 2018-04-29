@@ -1,0 +1,19 @@
+<div id="assign_developer_popup_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Developer</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag admin_add_todo_developer_path(project, to_do_list), method: :post, remote: true do %>
+          <div class="form-group">
+            <%= label_tag :developer %>
+            <%= select_tag :user_id, options_for_select(select_developers), required: true, class: 'form-control', prompt: 'Select' %>
+          </div>
+          <%= submit_tag "Add", class: 'btn btn-info' %>    
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</div>

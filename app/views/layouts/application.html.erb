@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TodoApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">ToDoApp</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	<% if user_signed_in? %>
+          <li>
+            <%= link_to current_user.email, "javascript:void(0);" %>  
+          </li>
+          <li>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path %>  
+          </li>
+          <li>
+            <%= link_to "sign in", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+	<div class="container">
+		<%= yield %>
+	</div>
+</body>
+</html>

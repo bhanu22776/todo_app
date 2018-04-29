@@ -1,0 +1,28 @@
+<%= link_to 'Add Todo', 'javascript: void(0);', class: "btn btn-info add_project_todo_list", "data-project-id" => @project.id %>
+
+<table class="table table-responsive table-striped">
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @todo_lists.each_with_index do |todo_list, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= todo_list.title %></td>
+        <td><%= todo_list.description %></td>
+        <td>
+          <% if todo_list.user.present? %>
+            <%= todo_list.user.name.titleize %>
+          <% else %>
+            <%= link_to 'Assign Developer', 'javascript: void(0);', class: "btn btn-info assign_developer", "data-project-id" => @project.id, "data-todo-id" => todo_list.id %>
+          <% end %>       
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<%= link_to "Back", admin_home_index_path, class: "btn btn-info" %>

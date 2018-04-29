@@ -1,0 +1,25 @@
+<table class="table table-responsive table-striped">
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @to_do_lists.each_with_index do |todo_list, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= todo_list.title %></td>
+        <td><%= todo_list.description %></td>
+        <td><%= todo_list.status.titleize %></td>
+        <td>
+          <% unless todo_list.done? %>
+            <%= link_to 'Change Status', 'javascript: void(0);', class: "btn btn-info change_todo_status", "data-project-id" => todo_list.project_id, "data-todo-id" => todo_list.id %>
+          <% end %>       
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>

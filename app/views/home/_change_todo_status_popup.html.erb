@@ -1,0 +1,19 @@
+<div id="change_status_popup_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change ToDO Status</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag update_todo_status_path(project, to_do_list), method: :post, remote: true do %>
+          <div class="form-group">
+            <%= label_tag :status %>
+            <%= select_tag :status, options_for_select(select_status, to_do_list.status), required: true, class: 'form-control', prompt: 'Select Status' %>
+          </div>
+          <%= submit_tag "Update", class: 'btn btn-info' %>    
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</div>

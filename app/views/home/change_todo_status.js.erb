@@ -1,0 +1,4 @@
+jQuery.noConflict();
+$("#change_status_popup_modal").remove();
+$('body').append("<%= j(render partial: 'change_todo_status_popup', locals: {project: @project, to_do_list: @to_do_list}) %>");
+$("#change_status_popup_modal").modal({backdrop: 'static', keyboard: false, show: true});
